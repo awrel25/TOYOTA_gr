@@ -174,7 +174,6 @@ class _ProductCardState extends State<ProductCard> {
   }
 }
 
-/// Simbol Chat Admin langsung pada setiap kartu produk (tanpa form pemesanan).
 class _ChatAdminBadgeButton extends StatefulWidget {
   const _ChatAdminBadgeButton({required this.onTap});
   final VoidCallback onTap;
