@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import '../data/products.dart';
 import '../format.dart';
@@ -109,11 +110,18 @@ class _ProductDetailState extends State<ProductDetail> {
               if (p.tag != null) ...[
                 const SizedBox(width: 10),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 3,
+                  ),
                   color: C.red,
                   child: Text(
                     p.tag!.toUpperCase(),
-                    style: T.label(10.5, color: Colors.white, w: FontWeight.w700),
+                    style: T.label(
+                      10.5,
+                      color: Colors.white,
+                      w: FontWeight.w700,
+                    ),
                   ),
                 ),
               ],
@@ -122,14 +130,24 @@ class _ProductDetailState extends State<ProductDetail> {
           const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.only(right: 36),
-            child: Text(p.name.toUpperCase(), style: T.display(m ? 32 : 42)),
+            child: Text(
+              p.name.toUpperCase(),
+              style: T.display(m ? 32 : 42),
+            ),
           ),
           const SizedBox(height: 14),
           Text.rich(
             TextSpan(
               children: [
-                if (p.priceFrom) TextSpan(text: 'mulai ', style: T.body(14, color: C.mute)),
-                TextSpan(text: rupiah(p.price), style: T.display(32, height: 1.1)),
+                if (p.priceFrom)
+                  TextSpan(
+                    text: 'mulai ',
+                    style: T.body(14, color: C.mute),
+                  ),
+                TextSpan(
+                  text: rupiah(p.price),
+                  style: T.display(32, height: 1.1),
+                ),
               ],
             ),
           ),
@@ -194,8 +212,15 @@ class _ProductDetailState extends State<ProductDetail> {
                     child: MouseRegion(
                       cursor: SystemMouseCursors.click,
                       child: Text(
-                        (_showChart ? 'Tutup panduan ukuran' : 'Panduan ukuran').toUpperCase(),
-                        style: T.label(12.5, color: C.red, w: FontWeight.w700),
+                        (_showChart
+                                ? 'Tutup panduan ukuran'
+                                : 'Panduan ukuran')
+                            .toUpperCase(),
+                        style: T.label(
+                          12.5,
+                          color: C.red,
+                          w: FontWeight.w700,
+                        ),
                       ),
                     ),
                   ),
@@ -230,7 +255,10 @@ class _ProductDetailState extends State<ProductDetail> {
               child: _showChart && p.chart != null
                   ? Padding(
                       padding: const EdgeInsets.only(top: 16),
-                      child: _ChartTable(chart: p.chart!, highlight: _size),
+                      child: _ChartTable(
+                        chart: p.chart!,
+                        highlight: _size,
+                      ),
                     )
                   : const SizedBox(width: double.infinity),
             ),
@@ -246,13 +274,19 @@ class _ProductDetailState extends State<ProductDetail> {
           // Jumlah & Estimasi
           Row(
             children: [
-              _Qty(value: _qty, onChanged: (v) => setState(() => _qty = v)),
+              _Qty(
+                value: _qty,
+                onChanged: (v) => setState(() => _qty = v),
+              ),
               const Spacer(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text('ESTIMASI HARGA', style: T.label(11.5)),
-                  Text(rupiah(p.price * _qty), style: T.display(28, height: 1.1)),
+                  Text(
+                    rupiah(p.price * _qty),
+                    style: T.display(28, height: 1.1),
+                  ),
                 ],
               ),
             ],
@@ -276,7 +310,12 @@ class _ProductDetailState extends State<ProductDetail> {
 }
 
 class _Gallery extends StatelessWidget {
-  const _Gallery({required this.product, required this.index, required this.onSelect});
+  const _Gallery({
+    required this.product,
+    required this.index,
+    required this.onSelect,
+  });
+
   final Product product;
   final int index;
   final ValueChanged<int> onSelect;
@@ -284,15 +323,21 @@ class _Gallery extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final imgs = product.images;
+
     return Container(
-      color: C.surface2,
+      // Background galeri disamakan dengan katalog produk.
+      color: const Color(0xFFE3E5E8),
       child: Column(
         children: [
           AspectRatio(
             aspectRatio: 1,
             child: Stack(
               children: [
-                const Positioned(left: 0, bottom: 0, child: Slashes(width: 150, height: 70)),
+                const Positioned(
+                  left: 0,
+                  bottom: 0,
+                  child: Slashes(width: 150, height: 70),
+                ),
                 Positioned.fill(
                   child: Padding(
                     padding: const EdgeInsets.all(28),
@@ -304,7 +349,10 @@ class _Gallery extends StatelessWidget {
                         fit: BoxFit.contain,
                         filterQuality: FilterQuality.high,
                         errorBuilder: (_, __, ___) => const Center(
-                          child: Icon(Icons.image_not_supported_outlined, color: C.mute),
+                          child: Icon(
+                            Icons.image_not_supported_outlined,
+                            color: C.mute,
+                          ),
                         ),
                       ),
                     ),
@@ -357,9 +405,13 @@ class _Gallery extends StatelessWidget {
 class _Label extends StatelessWidget {
   const _Label(this.text);
   final String text;
+
   @override
   Widget build(BuildContext context) =>
-      Text(text.toUpperCase(), style: T.label(13.5, color: C.mute, w: FontWeight.w700));
+      Text(
+        text.toUpperCase(),
+        style: T.label(13.5, color: C.mute, w: FontWeight.w700),
+      );
 }
 
 class _OptionBox extends StatelessWidget {
@@ -369,6 +421,7 @@ class _OptionBox extends StatelessWidget {
     required this.child,
     this.minWidth = 0,
   });
+
   final bool selected;
   final VoidCallback onTap;
   final Widget child;
@@ -382,12 +435,18 @@ class _OptionBox extends StatelessWidget {
         onTap: onTap,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 150),
-          constraints: BoxConstraints(minWidth: minWidth, minHeight: 44),
+          constraints: BoxConstraints(
+            minWidth: minWidth,
+            minHeight: 44,
+          ),
           padding: const EdgeInsets.symmetric(horizontal: 16),
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: selected ? C.red : Colors.transparent,
-            border: Border.all(color: selected ? C.red : C.line, width: 1.5),
+            border: Border.all(
+              color: selected ? C.red : C.line,
+              width: 1.5,
+            ),
           ),
           child: child,
         ),
@@ -398,6 +457,7 @@ class _OptionBox extends StatelessWidget {
 
 class _SpecRow extends StatelessWidget {
   const _SpecRow(this.k, this.v);
+
   final String k;
   final String v;
 
@@ -408,8 +468,13 @@ class _SpecRow extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(width: 92, child: Text(k.toUpperCase(), style: T.label(12.5))),
-          Expanded(child: Text(v, style: T.body(14.5))),
+          SizedBox(
+            width: 92,
+            child: Text(k.toUpperCase(), style: T.label(12.5)),
+          ),
+          Expanded(
+            child: Text(v, style: T.body(14.5)),
+          ),
         ],
       ),
     );
@@ -417,7 +482,11 @@ class _SpecRow extends StatelessWidget {
 }
 
 class _Qty extends StatelessWidget {
-  const _Qty({required this.value, required this.onChanged});
+  const _Qty({
+    required this.value,
+    required this.onChanged,
+  });
+
   final int value;
   final ValueChanged<int> onChanged;
 
@@ -428,20 +497,37 @@ class _Qty extends StatelessWidget {
           child: SizedBox(
             width: 42,
             height: 44,
-            child: Icon(i, size: 19, color: f == null ? C.line : C.text),
+            child: Icon(
+              i,
+              size: 19,
+              color: f == null ? C.line : C.text,
+            ),
           ),
         );
+
     return Container(
-      decoration: BoxDecoration(border: Border.all(color: C.line, width: 1.5)),
+      decoration: BoxDecoration(
+        border: Border.all(color: C.line, width: 1.5),
+      ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          btn(Icons.remove, value > 1 ? () => onChanged(value - 1) : null),
+          btn(
+            Icons.remove,
+            value > 1 ? () => onChanged(value - 1) : null,
+          ),
           SizedBox(
             width: 36,
-            child: Text('$value', textAlign: TextAlign.center, style: T.display(22, height: 1.4)),
+            child: Text(
+              '$value',
+              textAlign: TextAlign.center,
+              style: T.display(22, height: 1.4),
+            ),
           ),
-          btn(Icons.add, value < 99 ? () => onChanged(value + 1) : null),
+          btn(
+            Icons.add,
+            value < 99 ? () => onChanged(value + 1) : null,
+          ),
         ],
       ),
     );
@@ -449,21 +535,37 @@ class _Qty extends StatelessWidget {
 }
 
 class _ChartTable extends StatelessWidget {
-  const _ChartTable({required this.chart, this.highlight});
+  const _ChartTable({
+    required this.chart,
+    this.highlight,
+  });
+
   final SizeChart chart;
   final String? highlight;
 
   @override
   Widget build(BuildContext context) {
-    TableRow row(List<String> cells, {bool head = false, bool hi = false}) => TableRow(
+    TableRow row(
+      List<String> cells, {
+      bool head = false,
+      bool hi = false,
+    }) =>
+        TableRow(
           decoration: BoxDecoration(
-            color: head ? C.surface2 : (hi ? C.red.withAlpha(60) : Colors.transparent),
-            border: const Border(bottom: BorderSide(color: C.line)),
+            color: head
+                ? C.surface2
+                : (hi ? C.red.withAlpha(60) : Colors.transparent),
+            border: const Border(
+              bottom: BorderSide(color: C.line),
+            ),
           ),
           children: [
             for (final c in cells)
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                  vertical: 10,
+                ),
                 child: Text(
                   head ? c.toUpperCase() : c,
                   textAlign: TextAlign.center,
@@ -487,7 +589,10 @@ class _ChartTable extends StatelessWidget {
               children: [
                 row(['Size', ...chart.columns], head: true),
                 for (final e in chart.rows.entries)
-                  row([e.key, ...e.value], hi: e.key == highlight),
+                  row(
+                    [e.key, ...e.value],
+                    hi: e.key == highlight,
+                  ),
               ],
             ),
           ),
