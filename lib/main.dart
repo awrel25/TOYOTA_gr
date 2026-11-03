@@ -15,7 +15,7 @@ class GrMerchApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'GR Merchandise — Official Catalog 2025',
+      title: 'GR Merchandise — Official Catalog 2026',
       debugShowCheckedModeBanner: false,
       theme: buildTheme(),
       home: const HomePage(),

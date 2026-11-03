@@ -23,7 +23,7 @@ class AboutSection extends StatelessWidget {
     (
       '03',
       'Official OEM Part Number',
-      'Seluruh koleksi memiliki kode suku cadang (Part Number) resmi Toyota Gazoo Racing Collection 2025 yang terjamin keasliannya di 29 jaringan outlet GR Places di Indonesia.',
+      'Seluruh koleksi memiliki kode suku cadang (Part Number) resmi Toyota Gazoo Racing Collection 2026 yang terjamin keasliannya di 29 jaringan outlet GR Places di Indonesia.',
     ),
   ];
 

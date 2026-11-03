@@ -120,7 +120,7 @@ class HeroBanner extends StatelessWidget {
                                 const SizedBox(width: 10),
                                 Flexible(
                                   child: Text(
-                                    'OFFICIAL APPAREL & MERCHANDISE CATALOG 2025',
+                                    'OFFICIAL APPAREL & MERCHANDISE CATALOG 2026',
                                     style: T.label(compact ? 11.5 : 14, color: C.red, w: FontWeight.w700),
                                   ),
                                 ),
@@ -134,12 +134,12 @@ class HeroBanner extends StatelessWidget {
                               TextSpan(
                                 style: T.display(headlineSize),
                                 children: [
-                                  const TextSpan(text: 'SEMANGAT\n'),
+                                  const TextSpan(text: 'GAYA\n'),
                                   TextSpan(
-                                    text: 'BALAP,\n',
+                                    text: 'BERKELAS,\n',
                                     style: T.display(headlineSize, color: C.red),
                                   ),
-                                  const TextSpan(text: 'GAYA HARIAN.'),
+                                  const TextSpan(text: 'MELAJU TANPA BATAS.'),
                                 ],
                               ),
                             ),
@@ -150,7 +150,7 @@ class HeroBanner extends StatelessWidget {
                             child: ConstrainedBox(
                               constraints: const BoxConstraints(maxWidth: 490),
                               child: Text(
-                                'Koleksi resmi Toyota Gazoo Racing 2025. Pilih polo, t-shirt, jaket, hingga gears favorit Anda dan pesan instan melalui tombol Chat Admin pada setiap produk.',
+                                'Koleksi resmi Toyota Gazoo Racing 2026. Pilih polo, t-shirt, jaket, hingga gears favorit Anda dan pesan instan melalui tombol Chat Admin pada setiap produk.',
                                 style: T.body(compact ? 14.5 : (m ? 15.5 : 17.5), color: C.text.withAlpha(220)),
                               ),
                             ),
