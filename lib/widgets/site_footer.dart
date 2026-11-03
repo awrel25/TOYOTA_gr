@@ -58,7 +58,7 @@ class SiteFooter extends StatelessWidget {
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
                       _WhiteButton(
-                        label: 'Chat Admin (${Config.whatsappDisplay})',
+                        label: 'Chat Admin',
                         onTap: () => openWhatsApp(),
                       ),
                       GrButton(
